@@ -1,0 +1,23 @@
+%nav.navbar.navbar-default.bg-dark
+  .container
+    = link_to 'CaloriesCounter', root_path
+    %ul.nav.navbar-nav
+      %li.dropdown
+        %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          Menu
+          %span.caret
+        %ul.dropdown-menu.bg-dark
+          %li
+            %a{:href => "#"}
+              - if user_signed_in?
+                = link_to "Edycja profilu", edit_user_registration_path
+                %br/
+                = link_to "Wyloguj", destroy_user_session_path, method: :delete
+              - else
+                = link_to "Logowanie", new_user_session_path
+                %br/
+                = link_to "Rejestracja", new_user_registration_path
+          %li
+            %a{:href => "#"} Podsumowanie
+          %li
+            %a{:href => "#"} Pomiary
