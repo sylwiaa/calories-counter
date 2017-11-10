@@ -15,6 +15,6 @@
     = f.text_field :calories_per_100, class: 'form-control'
     %br
     %h5 Eaten on:
-    %input{:type => "date", class: 'form-control'}
+    = f.date_select :eaten_on, class: 'form-control'
     %br
     = f.submit "Wyślij", class: 'btn btn-default'
