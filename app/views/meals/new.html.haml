@@ -1,0 +1,6 @@
+.container
+  = link_to 'Cofnij', meals_path
+  .row
+    .col-sm-12
+      %h3 Dodaj posiłek:
+      = render partial: 'form', meal: @meal

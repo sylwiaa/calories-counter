@@ -1,0 +1,20 @@
+.container
+  = form_for @meal, html: { multipart: true } do |f|
+    %h5 Name:
+    = f.text_field :name, class: 'form-control'
+    %br
+    %h5 Meal type:
+    = f.text_field :meal_type, class: 'form-control'
+    %h5 Category:
+    = f.text_field :category, class: 'form-control'
+    %br
+    %h5 Quantity:
+    = f.text_field :quantity, class: 'form-control'
+    %br
+    %h5 Calories per 100g :
+    = f.text_field :calories_per_100, class: 'form-control'
+    %br
+    %h5 Eaten on:
+    %input{:type => "date", class: 'form-control'}
+    %br
+    = f.submit "Wyślij", class: 'btn btn-default'

@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20171110125809) do
     t.integer "user_id"
     t.string "name"
     t.integer "quantity"
+    t.integer "calories_per_100"
     t.string "category"
     t.date "eaten_on"
     t.string "meal_type"

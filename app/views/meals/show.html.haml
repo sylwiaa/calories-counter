@@ -1,0 +1,24 @@
+.container
+  %h1 Meal
+  = link_to 'Cofnij', meals_path
+
+  %table.table.table-bordered
+    %tr.success
+      %th Name:
+      %th Quantity:
+      %th Meal type:
+      %th Calories per 100:
+      %th Category:
+      %th Eaten on:
+    %tr
+      %td= @meal.name
+      %td= @meal.quantity
+      %td= @meal.meal_type
+      %td= @meal.calories_per_100
+      %td= @meal.category
+      %td= @meal.eaten_on
+
+
+  = link_to 'Edytuj posiłek', edit_meal_path(@meal)
+  %br/
+  = link_to "Usuń", meal_path(@meal), method: :delete, data: {confirm: 'Jesteś pewnien?'}
