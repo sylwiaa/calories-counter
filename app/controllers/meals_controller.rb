@@ -1,34 +1,47 @@
 class MealsController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @meals = Meal.all
+    @meals = current_user.meals
+    if params[:eaten_on].blank?
+      @meals = current_user.meals.limit(10)
+    else
+      @meals = current_user.meals.where("eaten_on = ?", params[:eaten_on]).limit(10)
+    end
+
+    if params[:meal_type].blank?
+      @meals = current_user.meals.limit(10)
+    else
+      @meals = current_user.meals.where("meal_type = ?", params[:meal_type]).limit(10)
+    end
   end
 
   def show
-    @meal = Meal.find(params[:id])
+    @meal = current_user.meals.find(params[:id])
   end
 
   def new
-    @meal = Meal.new
+    @meal = current_user.meals.build
+    @meal.meal_type = "bebinka"
   end
 
   def create
-    @meal = Meal.new(meal_params)
+    @meal = current_user.meals.build(meal_params)
     @meal.save
     redirect_to action: 'index'
   end
 
   def edit
-    @meal = Meal.find(params[:id])
+    @meal =  current_user.meals.find(params[:id])
   end
 
   def destroy
-    @meal = Meal.find(params[:id])
+    @meal =  current_user.meals.find(params[:id])
     @meal.destroy
     redirect_to action: 'index'
   end
 
   def update
-    @meal = Meal.find(params[:id])
+    @meal =  current_user.meals.find(params[:id])
     if @meal.update(meal_params)
       redirect_to action: 'index'
     else
