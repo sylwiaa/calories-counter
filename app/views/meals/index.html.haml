@@ -9,7 +9,7 @@
           %th Id:
           %th Name:
           %th Meal type:
-          %th Calories per 100:
+          %th Calories:
           %th Category:
           %th Usuń:
         - @meals.each do |meal|
@@ -17,6 +17,6 @@
             %td= meal.id
             %td= link_to meal.name, meal_path(meal)
             %td= meal.meal_type
-            %td= meal.calories_per_100
+            %td= meal.calories
             %td= meal.category
             %td= link_to "X", meal_path(meal), method: :delete, data: {confirm: 'Jesteś pewnien?'}

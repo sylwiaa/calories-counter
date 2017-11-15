@@ -1,17 +1,15 @@
 class MealsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     @meals = current_user.meals
-    if params[:eaten_on].blank?
-      @meals = current_user.meals.limit(10)
-    else
-      @meals = current_user.meals.where("eaten_on = ?", params[:eaten_on]).limit(10)
+
+    if params[:meal_type].present?
+      @meals = @meals.where(meal_type: params[:meal_type])
     end
 
-    if params[:meal_type].blank?
-      @meals = current_user.meals.limit(10)
-    else
-      @meals = current_user.meals.where("meal_type = ?", params[:meal_type]).limit(10)
+    if params[:eaten_on].present?
+      @meals = @meals.where(eaten_on: params[:eaten_on])
     end
   end
 
@@ -21,7 +19,7 @@ class MealsController < ApplicationController
 
   def new
     @meal = current_user.meals.build
-    @meal.meal_type = "bebinka"
+    @meal.meal_type = params[:meal_type]
   end
 
   def create
@@ -31,7 +29,7 @@ class MealsController < ApplicationController
   end
 
   def edit
-    @meal =  current_user.meals.find(params[:id])
+    @meal = current_user.meals.find(params[:id])
   end
 
   def destroy
@@ -52,7 +50,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :quantity, :calories_per_100, :category, :eaten_on, :meal_type)
+    params.require(:meal).permit(:name, :quantity, :calories, :category, :eaten_on, :meal_type)
   end
 
 end
