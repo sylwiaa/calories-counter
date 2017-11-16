@@ -24,7 +24,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = current_user.meals.build(meal_params)
-    @meal.save
+    @meal.save!
     redirect_to action: 'index'
   end
 
@@ -50,7 +50,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :quantity, :calories, :category, :eaten_on, :meal_type)
+    params.require(:meal).permit(:name, :quantity, :calories, :category, :eaten_on, :meal_type, :product_id)
   end
 
 end
