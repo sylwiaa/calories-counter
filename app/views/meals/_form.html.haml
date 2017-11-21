@@ -2,14 +2,7 @@
   = form_for @meal, html: { multipart: true } do |f|
     %h5 Product:
     = f.collection_select :product_id, Product.all, :id, :select_title, prompt: true
-
-    %h5 Name:
-    = f.text_field :name, class: 'form-control'
     = f.hidden_field :meal_type
-    %br
-    %h5 Category:
-    = f.text_field :category, class: 'form-control'
-    %br/
     %h5 Quantity:
     = f.text_field :quantity, class: 'form-control'
     %br
