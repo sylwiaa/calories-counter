@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'chartkick'
 gem 'groupdate'
+gem "factory_bot_rails", "~> 4.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
