@@ -20,6 +20,7 @@ class MealsController < ApplicationController
   def new
     @meal = current_user.meals.build
     @meal.meal_type = params[:meal_type]
+    @meal.eaten_on = params[:eaten_on]
   end
 
   def create
