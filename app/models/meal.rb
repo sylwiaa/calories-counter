@@ -5,7 +5,7 @@ class Meal < ApplicationRecord
   belongs_to :product
 
   validates :meal_type, inclusion: { in: ["breakfast", "lunch", "dinner", "supper", "snacks"]}
-  validates :quantity, numericality: true
+  validates :quantity, numericality: { greater_than: 0 }
 
   def set_calories_from_product
     self.calories = product.calories_per_100 * quantity / 100
