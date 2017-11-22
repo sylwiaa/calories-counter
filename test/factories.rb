@@ -1,4 +1,8 @@
 FactoryBot.define do
+  factory :profile do
+    user
+  end
+
   factory :category do
     name "Example"
   end
