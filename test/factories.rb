@@ -1,6 +1,12 @@
 FactoryBot.define do
   factory :profile do
     user
+    gender :male
+    date_of_birth { 23.years.ago }
+    weight 60
+    height 170
+    activity_level 3
+
   end
 
   factory :category do
