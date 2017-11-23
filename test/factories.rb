@@ -6,7 +6,6 @@ FactoryBot.define do
     weight 60
     height 170
     activity_level 3
-
   end
 
   factory :category do
