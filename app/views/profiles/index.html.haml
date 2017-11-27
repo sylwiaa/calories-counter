@@ -1,0 +1,25 @@
+.container
+  %h3= link_to 'Edytuj profil', edit_profile_path
+  = current_user.id
+
+  .row
+    .col-md-4
+      %h1 Lista posiłków
+    .col-md-8
+      %table.table.table-bordered
+        %tr.success
+          %th User:
+          %th Gender:
+          %th Date of birth:
+          %th Weight:
+          %th Height:
+          %th Activity level:
+          %th Purpose:
+        - @profiles.each do |profile|
+          %tr
+            %td= profile_user.id
+            %td= link_to profile_user.name, meal_path(meal)
+            %td= meal.meal_type
+            %td= meal.calories
+            %td= meal.category
+            %td= link_to "X", meal_path(meal), method: :delete, data: {confirm: 'Jesteś pewnien?'}

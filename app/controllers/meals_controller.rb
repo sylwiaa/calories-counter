@@ -25,7 +25,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = current_user.meals.build(meal_params)
-    @meal.save!
+    @meal.save
     redirect_to action: 'index'
   end
 

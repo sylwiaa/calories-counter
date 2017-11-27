@@ -6,7 +6,8 @@
 .container
   - today = Date.today
   - (0...7).each do |day|
-    = (today - day)
+    = current_day = today - day
+    - calories_by_meal_types = current_user.meals.group(:meal_type).sum(:calories)
     .calories
       %h4 Ilość spożytych kalorii w ciągu dnia:
       = current_user.meals.sum(:calories)

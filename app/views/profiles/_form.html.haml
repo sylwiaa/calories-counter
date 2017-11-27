@@ -1,0 +1,23 @@
+.container
+  = form_for @profile, html: { multipart: true } do |f|
+    .form-group
+      %input{:checked => "checked", :name => "gender", :type => "radio", :value => "male"} Mężczyna
+      %input{:type => "radio", :name => "gender", :value => "female"} Kobieta
+
+    .form-group
+      = f.label :date_of_birth
+      %input{:type => "date", class: 'form-control'}
+
+    .form-group
+      = f.label :weight
+      = f.text_field :weight, class: 'form-control'
+
+    .form-group
+      = f.label :height
+      = f.text_field :height, class: 'form-control'
+
+    .form-group
+      = f.select :activity_level, [["lozko", 1]], class: 'form-control', include_blank: true
+    .form-group
+      = f.select :purpose, [], class: 'form-control', include_blank: true
+    = f.submit "Wyślij", class: 'btn btn-default'
