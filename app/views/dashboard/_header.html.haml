@@ -10,13 +10,13 @@
           %li
             %a{:href => "#"}
               - if user_signed_in?
-                = link_to "Edycja profilu", edit_user_registration_path
+                = link_to "Edit account", edit_user_registration_path
                 %br/
-                = link_to "Wyloguj", destroy_user_session_path, method: :delete
+                = link_to "Log out", destroy_user_session_path, method: :delete
               - else
-                = link_to "Logowanie", new_user_session_path
+                = link_to "Log in", new_user_session_path
                 %br/
-                = link_to "Rejestracja", new_user_registration_path
+                = link_to "Registration", new_user_registration_path
           %li
             %a{:href => "#"} Podsumowanie
           %li
