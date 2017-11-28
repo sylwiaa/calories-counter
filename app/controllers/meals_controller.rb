@@ -26,7 +26,7 @@ class MealsController < ApplicationController
   def create
     @meal = current_user.meals.build(meal_params)
     if @meal.save
-      redirect_to action: 'index'
+      redirect_to action: 'index', eaten_on: @meal.eaten_on
     else
       render :new
     end
