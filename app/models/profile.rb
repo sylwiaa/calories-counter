@@ -21,6 +21,10 @@ class Profile < ApplicationRecord
     end
   end
 
+  def age
+    ((Date.today - date_of_birth) / 365).to_i
+  end
+
   def activity_factor
     case activity_level
     when 0 then 1.25
@@ -32,9 +36,6 @@ class Profile < ApplicationRecord
     end
   end
 
-  def age
-    ((Date.today - date_of_birth) / 365).to_i
-  end
 
   def total_metabolic_rate
     (basal_metabolic_rate * activity_factor).round

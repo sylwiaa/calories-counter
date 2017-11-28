@@ -25,8 +25,11 @@ class MealsController < ApplicationController
 
   def create
     @meal = current_user.meals.build(meal_params)
-    @meal.save
-    redirect_to action: 'index'
+    if @meal.save
+      redirect_to action: 'index'
+    else
+      render :new
+    end
   end
 
   def edit

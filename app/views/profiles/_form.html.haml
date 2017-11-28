@@ -17,7 +17,7 @@
       = f.text_field :height, class: 'form-control'
 
     .form-group
-      = f.select :activity_level, [["lozko", 1]], class: 'form-control', include_blank: true
+      = f.select :activity_level, [["patient lying in bed", 0], ["low physical activity", 1], ["moderate physical activity", 2], ["active lifestyle", 3], ["very active lifestyle", 4], ["competitive sport", 5] ], class: 'form-control', include_blank: true
     .form-group
-      = f.select :purpose, [], class: 'form-control', include_blank: true
+      = f.select :purpose, [["lose weight", 0], ["gain weight", 1], ["maintain weight", 2]], class: 'form-control', include_blank: true
     = f.submit "Wyślij", class: 'btn btn-default'
