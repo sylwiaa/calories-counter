@@ -1,6 +1,13 @@
 .container
-  = link_to 'Cofnij', root_path
+  %h3 Profile #{current_user.email}
+
+  %ul.nav.nav-tabs
+    %li.nav-item
+      = link_to 'Edit account', edit_user_registration_path, class: 'nav-link'
+    %li.nav-item
+      %a.nav-link.active{:href => "#"} Edit profile
+
   .row
     .col-sm-12
-      %h3 Edytuj profil
       = render partial: 'form', profile: @profile
+      = link_to 'Back', root_path

@@ -1,28 +1,28 @@
-.container
-  - if @profile.errors.present?
-    %ul
-      - @profile.errors.full_messages.each do |message|
-        %li= message
-  = form_for @profile, url: profile_path, html: { multipart: true } do |f|
-    .form-group
-      = f.radio_button :gender, 'male'
-      = label :gender_male, 'male'
-      = f.radio_button :gender, 'female'
-      = label :gender_female, 'female'
-    .form-group
-      = f.label :date_of_birth
-      = f.date_select :date_of_birth, order: [:month, :day, :year]
 
-    .form-group
-      = f.label :weight
-      = f.text_field :weight, class: 'form-control'
+- if @profile.errors.present?
+  %ul
+    - @profile.errors.full_messages.each do |message|
+      %li= message
+= form_for @profile, url: profile_path, html: { multipart: true } do |f|
+  .form-group
+    = f.radio_button :gender, 'male'
+    = label :gender_male, 'male'
+    = f.radio_button :gender, 'female'
+    = label :gender_female, 'female'
+  .form-group
+    = f.label :date_of_birth
+    = f.date_select :date_of_birth, order: [:month, :day, :year]
 
-    .form-group
-      = f.label :height
-      = f.text_field :height, class: 'form-control'
+  .form-group
+    = f.label :weight
+    = f.text_field :weight, class: 'form-control'
 
-    .form-group
-      = f.select :activity_level, [["patient lying in bed", 0], ["low physical activity", 1], ["moderate physical activity", 2], ["active lifestyle", 3], ["very active lifestyle", 4], ["competitive sport", 5] ], class: 'form-control', include_blank: true
-    .form-group
-      = f.select :purpose, [["lose weight", 0], ["gain weight", 1], ["maintain weight", 2]], class: 'form-control', include_blank: true
-    = f.submit "Wyślij", class: 'btn btn-default'
+  .form-group
+    = f.label :height
+    = f.text_field :height, class: 'form-control'
+
+  .form-group
+    = f.select :activity_level, [["patient lying in bed", 0], ["low physical activity", 1], ["moderate physical activity", 2], ["active lifestyle", 3], ["very active lifestyle", 4], ["competitive sport", 5] ], class: 'form-control', include_blank: true
+  .form-group
+    = f.select :purpose, [["lose weight", 0], ["gain weight", 1], ["maintain weight", 2]], class: 'form-control', include_blank: true
+  = f.submit "Wyślij", class: 'btn btn-default'
