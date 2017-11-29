@@ -1,12 +1,17 @@
 .container
+  - if @profile.errors.present?
+    %ul
+      - @profile.errors.full_messages.each do |message|
+        %li= message
   = form_for @profile, url: profile_path, html: { multipart: true } do |f|
     .form-group
-      %input{:checked => "checked", :name => "gender", :type => "radio", :value => "male"} Mężczyna
-      %input{:type => "radio", :name => "gender", :value => "female"} Kobieta
-
+      = f.radio_button :gender, 'male'
+      = label :gender_male, 'male'
+      = f.radio_button :gender, 'female'
+      = label :gender_female, 'female'
     .form-group
       = f.label :date_of_birth
-      %input{:type => "date", class: 'form-control'}
+      = f.date_select :date_of_birth, order: [:month, :day, :year]
 
     .form-group
       = f.label :weight

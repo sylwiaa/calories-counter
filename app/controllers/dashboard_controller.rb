@@ -2,6 +2,12 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # @set_calories_by_meal_types = current_user.meals.group(:meal_type).sum(:calories)
+    @profile = current_user.profile
+
+    if @profile
+      render :index
+    else
+      render :index_no_profile
+    end
   end
 end
