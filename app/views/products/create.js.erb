@@ -1,0 +1,5 @@
+<% if @product.errors.present? %>
+  alert('<%= @product.errors.full_messages.first %>')
+<% else %>
+  window.location.reload()
+<% end %>

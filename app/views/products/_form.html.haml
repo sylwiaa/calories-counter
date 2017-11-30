@@ -1,0 +1,21 @@
+= form_for @product, remote: true do |f|
+  .modal#productModal
+    .modal-dialog
+      .modal-content
+        .modal-header
+          .modal-title Create product
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"}
+        .modal-body
+          %h5 Name
+          = f.text_field :name
+
+          %h5 Category
+          = f.collection_select :category_id, Category.all, :id, :name
+
+          %h5 Calories per 100g
+          = f.number_field :calories_per_100
+
+        .modal-footer
+          %button.btn.btn-secondary{ "data-dismiss" => "modal" } Close
+          = f.submit class: 'btn btn-primary'

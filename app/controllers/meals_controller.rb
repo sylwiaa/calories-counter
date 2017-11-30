@@ -1,5 +1,6 @@
 class MealsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_empty_product, only: [:new, :create, :edit, :update]
 
   def index
     @meals = current_user.meals
@@ -52,6 +53,10 @@ class MealsController < ApplicationController
   end
 
   private
+
+  def set_empty_product
+    @product = current_user.products.build
+  end
 
   def meal_params
     params.require(:meal).permit(:name, :quantity, :calories, :category, :eaten_on, :meal_type, :product_id)

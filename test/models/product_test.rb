@@ -25,4 +25,15 @@ class ProductTest < ActiveSupport::TestCase
     product = build(:product, calories_per_100: -19)
     assert_equal false, product.valid?
   end
+
+  test "for_user method" do
+    user = create(:user)
+    other_user = create(:user)
+
+    a = create(:product, user: nil)
+    b = create(:product, user: user)
+    c = create(:product, user: other_user)
+
+    assert_equal [b, a], Product.for_user(user)
+  end
 end
