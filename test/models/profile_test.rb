@@ -109,4 +109,23 @@ class ProfileTest < ActiveSupport::TestCase
     )
     assert_equal 3719, profile.total_metabolic_rate
   end
+
+  test 'today_balance' do
+    profile = create(
+      :profile,
+      gender: 'male',
+      weight: 100,
+      height: 180,
+      date_of_birth: 32.years.ago,
+      activity_level: 3
+    )
+
+    product = create(:product, calories_per_100: 30)
+
+    create(:meal, product: product, user: profile.user, quantity: 100, eaten_on: Date.today)
+    create(:meal, product: product, user: profile.user, quantity: 100, eaten_on: 1.day.ago)
+    create(:meal, product: product, user: create(:user), quantity: 100, eaten_on: Date.today)
+
+    assert_equal -3689, profile.today_balance
+  end
 end

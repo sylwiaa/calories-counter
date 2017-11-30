@@ -36,8 +36,11 @@ class Profile < ApplicationRecord
     end
   end
 
-
   def total_metabolic_rate
     (basal_metabolic_rate * activity_factor).round
+  end
+
+  def today_balance
+    user.meals.where(eaten_on: Date.today).sum(:calories) - total_metabolic_rate
   end
 end
