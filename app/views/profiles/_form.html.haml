@@ -3,6 +3,7 @@
   %ul
     - @profile.errors.full_messages.each do |message|
       %li= message
+
 = form_for @profile, url: profile_path, html: { multipart: true } do |f|
   .form-group
     = f.radio_button :gender, 'male'
