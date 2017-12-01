@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :activity do
+    user
+    duration 15
+    completed_on { 2.days.ago }
+    activity_type 'stepper'
+  end
   factory :profile do
     user
     gender :male

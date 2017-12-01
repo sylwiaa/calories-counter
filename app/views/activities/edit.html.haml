@@ -1,0 +1,6 @@
+.container
+  = link_to 'Cofnij', activities_path
+  %h2 Edit activity
+  .row
+    .col-sm-6
+      = render partial: 'form', activity: @activity

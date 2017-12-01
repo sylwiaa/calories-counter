@@ -1,9 +1,14 @@
 = render 'products/form'
 
 - if @meal.errors.present?
-  %ul
-    - @meal.errors.full_messages.each do |message|
-      %li= message
+  .alert.alert-danger.alert-dismissible.fade.show{:role => "alert"}
+    %ul
+      - @ameal.errors.full_messages.each do |message|
+        %li
+          %strong= message
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"}
+
 
 = form_for @meal, html: { multipart: true } do |f|
   %h5 Product:

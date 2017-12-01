@@ -1,8 +1,12 @@
-
 - if @profile.errors.present?
-  %ul
-    - @profile.errors.full_messages.each do |message|
-      %li= message
+  .alert.alert-danger.alert-dismissible.fade.show{:role => "alert"}
+    %ul
+      - @profile.errors.full_messages.each do |message|
+        %li
+          %strong= message
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"}
+
 
 = form_for @profile, url: profile_path, html: { multipart: true } do |f|
   .form-group

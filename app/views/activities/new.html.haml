@@ -1,0 +1,7 @@
+.container
+  = link_to 'Cofnij', activities_path
+  %h2 Add activity
+  %h3= Date.today
+  .row
+    .col-sm-6
+      = render partial: 'form', activity: @activity

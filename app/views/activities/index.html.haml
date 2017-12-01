@@ -1,0 +1,19 @@
+.container
+  %h3 Activities:
+  %h2= link_to 'Add more activities', new_activity_path
+  %table.table.table-sm
+    %thead
+      %tr
+        %th{:scope => "col"} #
+        %th{:scope => "col"} Activity type
+        %th{:scope => "col"} Duration
+        %th{:scope => "col"} Completed on
+        %th{:scope => "col"} Delete
+    %tbody
+      - @activities.each_with_index do |activity, index|
+        %tr
+          %th{:scope => "row"}= index + 1
+          %th= link_to activity.activity_type, activity_path(activity)
+          %th= activity.duration
+          %th= activity.completed_on
+          %th= link_to "X", activity_path(activity), method: :delete, data: {confirm: 'Jesteś pewnien?'}
