@@ -3,7 +3,7 @@
 - if @meal.errors.present?
   .alert.alert-danger.alert-dismissible.fade.show{:role => "alert"}
     %ul
-      - @ameal.errors.full_messages.each do |message|
+      - @meal.errors.full_messages.each do |message|
         %li
           %strong= message
         %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
