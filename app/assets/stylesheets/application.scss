@@ -16,3 +16,25 @@
 $body-bg: #FDF6EB;
 @import "bootstrap";
 @import "font-awesome";
+.back {
+  a {
+  text-decoration: none;
+  float: right;
+  color: #7C7C7D;
+  }
+  a:hover{
+    color: #FF6328;
+  }
+}
+.nav-item {
+   color: #7C7C7D;
+   .nav-link.active:hover {
+     color: #FBC44D;
+   }
+   .nav-link {
+     color: #FBC44D;
+   }
+}
+.panel-body {
+  max-width: 450px;
+}

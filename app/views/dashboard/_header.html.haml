@@ -1,23 +1,16 @@
-%nav.navbar.navbar-default
-  .container
-    = link_to 'CaloriesCounter', root_path
-    %ul.nav.navbar-nav
-      %li.dropdown
-        %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-          Menu
-          %span.caret
-        %ul.dropdown-menu.bg-dark
-          %li
-            %a{:href => "#"}
-              - if user_signed_in?
-                = link_to "Edit account", edit_user_registration_path
-                %br/
-                = link_to "Log out", destroy_user_session_path, method: :delete
-              - else
-                = link_to "Log in", new_user_session_path
-                %br/
-                = link_to "Registration", new_user_registration_path
-          %li
-            %a{:href => "#"} Podsumowanie
-          %li
-            %a{:href => "#"} Pomiary
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  %a.navbar-brand= link_to 'CaloriesCounter', root_path
+  %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavAltMarkup", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  #navbarNavAltMarkup.collapse.navbar-collapse
+    %ul.navbar-nav.ml-auto
+      %li.nav-item
+        %a.nav-link{:href => "#"} Pomiary
+      %li.nav-item
+        %a.nav-link{:href => "#"} Podsumowanie
+      - if user_signed_in?
+        %li.nav-item= link_to "Edit account", edit_user_registration_path, class: 'nav-link'
+        %li.nav-item= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link'
+      - else
+        %li.nav-item= link_to "Log in", new_user_session_path, class: 'nav-link'
+        %li.nav-item= link_to "Registration", new_user_registration_path, class: 'nav-link'

@@ -1,4 +1,5 @@
 .container
+  .back= link_to 'Back', root_path
   %h3 Profile #{current_user.email}
 
   %ul.nav.nav-tabs
@@ -10,4 +11,3 @@
   .row
     .col-sm-12
       = render partial: 'form', profile: @profile
-      = link_to 'Back', root_path

@@ -18,7 +18,6 @@
 
   %h5 Meal type:
   = f.text_field :meal_type, class: 'form-control'
-  -# = f.hidden_field :meal_type
 
   %h5 Quantity:
   = f.text_field :quantity, class: 'form-control'
@@ -26,5 +25,4 @@
   %h5 Eaten on:
   = f.date_select :eaten_on, class: 'form-control'
   %br
-  -# = f.hidden_field :eaten_on
   = f.submit "Wyślij", class: 'btn btn-default'

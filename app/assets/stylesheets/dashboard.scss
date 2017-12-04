@@ -1,17 +1,25 @@
-.navbar {
-  background-color: #F5B872;
-  .dropdown-menu{
-    border: none;
-    a {
-      text-decoration: none;
-      color: #9FA0A5;
-    }
+.navbar-expand-lg {
+  a {
+    color: #7C7C7D;
+  }
+  a:hover {
+    color: #FF6328;
+    text-decoration: none;
+  }
+
+}
+.time {
+  text-align: center;
+}
+.date {
+  text-align: center;
+  h2 {
+    color: #7C7C7D;
   }
 }
 
 .links {
   text-align: center;
-  // padding: 20px 10px;
   .img-circle {
     border-radius: 50%;
   }

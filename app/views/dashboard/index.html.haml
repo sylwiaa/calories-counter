@@ -1,4 +1,4 @@
-.container
+.container.date
   %h2 Today
   %h2= Date.today
   = line_chart current_user.meals.group(:eaten_on).sum(:calories)

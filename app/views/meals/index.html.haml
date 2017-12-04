@@ -1,10 +1,8 @@
 .container
-  = current_user.id
-  = params[:eaten_on]
-
   .row
     .col-md-4
-      %h1 Lista posiłków
+      %h3 Lista posiłków z dnia
+      = params[:eaten_on]
     .col-md-8
       %table.table.table-bordered
         %tr.success
