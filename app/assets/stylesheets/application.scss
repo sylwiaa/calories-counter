@@ -13,7 +13,7 @@
  *= require_tree .
  *= require_self
  */
-$body-bg: #FDF6EB;
+
 @import "bootstrap";
 @import "font-awesome";
 .back {
@@ -23,9 +23,10 @@ $body-bg: #FDF6EB;
   color: #7C7C7D;
   }
   a:hover{
-    color: #FF6328;
+    color: #212529;
   }
 }
+
 .nav-item {
    color: #7C7C7D;
    .nav-link.active:hover {
@@ -37,4 +38,27 @@ $body-bg: #FDF6EB;
 }
 .panel-body {
   max-width: 450px;
+}
+
+.btn {
+  margin: 10px 0px;
+}
+
+.btn-default {
+  background-color: #F5B872;
+}
+.btn-default:hover {
+  background-color: #7C7C7D;
+}
+
+.btn-primary {
+  background-color: #7C7C7D;
+  border: none;
+}
+.btn-primary:hover {
+  background-color:  #FF6328;
+}
+
+.footer {
+  text-align: center;
 }

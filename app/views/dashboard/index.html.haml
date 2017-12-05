@@ -1,63 +1,92 @@
-.container.date
-  %h2 Today
-  %h2= Date.today
-  = line_chart current_user.meals.group(:eaten_on).sum(:calories)
+.container.dashboard-header
+  .row
+    .col-sm-6
+      %h2 Today
+      %h2= Date.today
+    .col-sm-6
+      %table.table.table-sm.table-bordered
+        %thead
+          %tr
+            %th BMI
+            %th Basal metabolic rate
+            %th Total metabolic rate
+        %tbody
+          %tr
+            %td= current_user.profile.body_mass_index
+            %td
+              =current_user.profile.basal_metabolic_rate
+              %span kcal
+            %td
+              =current_user.profile.total_metabolic_rate
+              %span kcal
 
-.container
+    = line_chart current_user.meals.group(:eaten_on).sum(:calories)
+.container.dashboard-list
   - today = Date.today
   - (0...7).each do |day|
-    - current_day = today - day
-    = current_day
-    - calories_by_meal_type = current_user.meals.group(:meal_type).where(eaten_on: current_day).sum(:calories)
-    .calories
-      %h4 Ilość spożytych kalorii w ciągu dnia:
-      = current_user.meals.sum(:calories)
-      %span kcal
+    .dashboard-list-item
+      - current_day = today - day
 
+      %h1.day-header= current_day
 
-    .container
+      - calories_by_meal_type = current_user.meals.group(:meal_type).where(eaten_on: current_day).sum(:calories)
+      .calories
+        %h4
+          The amount of calories during the day:
+          = current_user.meals.where(eaten_on: current_day).sum(:calories)
+          %span kcal
+          = link_to "[view list]", meals_path(eaten_on: current_day)
       .row
         .col-sm.links
-          %a{:href => "#"}
-            %img.img-circle{:alt => "Circle", :src => "http://via.placeholder.com/90x90"}/
+          = link_to new_meal_path(meal_type: "breakfast", eaten_on: current_day) do
+            = image_tag 'breakfast.png', width: 90
           .name_category
-            = link_to 'Breakfast', new_meal_path(meal_type: "breakfast", eaten_on: current_day)
+            = link_to 'Breakfast [+]', new_meal_path(meal_type: "breakfast", eaten_on: current_day)
             %br
             = calories_by_meal_type["breakfast"] || 0
             %span kcal
 
         .col-sm.links
-          %a{:href => "#"}
-            %img.img-circle{:alt => "Circle", :src => "http://via.placeholder.com/90x90"}/
+          = link_to new_meal_path(meal_type: "lunch", eaten_on: current_day) do
+            = image_tag 'lunch.png', width: 90
           .name_category
-            = link_to 'Lunch', new_meal_path(meal_type: "lunch", eaten_on: current_day)
+            = link_to 'Lunch [+]', new_meal_path(meal_type: "lunch", eaten_on: current_day)
             %br
             = calories_by_meal_type["lunch"] || 0
             %span kcal
 
         .col-sm.links
-          %a{:href => "#"}
-            %img.img-circle{:alt => "Circle", :src => "http://via.placeholder.com/90x90"}/
+          = link_to new_meal_path(meal_type: "dinner", eaten_on: current_day) do
+            = image_tag 'dinner.png', width: 90
           .name_category
-            = link_to 'Dinner', new_meal_path(meal_type: "dinner", eaten_on: current_day)
+            = link_to 'Dinner [+]', new_meal_path(meal_type: "dinner", eaten_on: current_day)
             %br
             = calories_by_meal_type["dinner"] || 0
             %span kcal
 
         .col-sm.links
-          %a{:href => "#"}
-            %img.img-circle{:alt => "Circle", :src => "http://via.placeholder.com/90x90"}/
+          = link_to new_meal_path(meal_type: "supper", eaten_on: current_day) do
+            = image_tag 'supper.png', width: 90
           .name_category
-            = link_to 'Supper', new_meal_path(meal_type: "supper", eaten_on: current_day)
+            = link_to 'Supper [+]', new_meal_path(meal_type: "supper", eaten_on: current_day)
             %br
             = calories_by_meal_type["supper"] || 0
             %span kcal
 
         .col-sm.links
-          %a{:href => "#"}
-            %img.img-circle{:alt => "Circle", :src => "http://via.placeholder.com/90x90"}/
+          = link_to new_meal_path(meal_type: "snacks", eaten_on: current_day) do
+            = image_tag 'snacks.png', width: 90
           .name_category
-            = link_to 'Snacks', new_meal_path(meal_type: "snacks", eaten_on: current_day)
+            = link_to 'Snacks [+]', new_meal_path(meal_type: "snacks", eaten_on: current_day)
             %br
             = calories_by_meal_type["snacks"] || 0
             %span kcal
+
+        .col-sm.links
+          = link_to new_activity_path do
+            = image_tag 'activity.png', width: 90
+          .name_category
+            = link_to 'Activity [+]', new_activity_path
+            %br
+            = current_user.activities.sum(:duration)
+            %span minutes

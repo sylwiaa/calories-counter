@@ -4,17 +4,15 @@
       .modal-content
         .modal-header
           .modal-title Create product
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %span{"aria-hidden" => "true"}
         .modal-body
           %h5 Name
-          = f.text_field :name
+          = f.text_field :name, class: 'form-control'
 
           %h5 Category
-          = f.collection_select :category_id, Category.all, :id, :name
+          = f.collection_select :category_id, Category.order(:name), :id, :name, {prompt: true}, class: 'form-control'
 
           %h5 Calories per 100g
-          = f.number_field :calories_per_100
+          = f.number_field :calories_per_100, class: 'form-control'
 
         .modal-footer
           %button.btn.btn-secondary{ "data-dismiss" => "modal" } Close

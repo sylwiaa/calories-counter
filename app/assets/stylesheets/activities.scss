@@ -1,3 +1,27 @@
-// Place all the styles related to the activities controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.activity-index {
+  span > a {
+    text-decoration: none;
+    color: #F5B872;
+    font-size: 19px;
+  }
+  a:hover {
+    color: #212529;
+  }
+  td > a {
+    text-decoration: none;
+    color: #F5B872;
+  }
+}
+.show-activity {
+  a {
+   text-decoration: none;
+   color: #F5B872;
+ }
+ a:hover {
+   text-decoration: none;
+   color: #212529;
+ }
+ .delete {
+   float: right;
+ }
+}

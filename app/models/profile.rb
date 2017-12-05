@@ -10,7 +10,7 @@ class Profile < ApplicationRecord
   validates :activity_level, inclusion: { in: (0..5) }
 
   def body_mass_index
-    (weight / height * 100).round(2)
+    ((weight / height**2 * 100)*100).round(2)
   end
 
   def basal_metabolic_rate

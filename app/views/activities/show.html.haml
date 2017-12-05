@@ -1,22 +1,16 @@
-.container
-  %h1 Meal
-  = link_to 'Cofnij', activities_path
-
-  %table.table.table-sm
+.container.show-activity
+  .back= link_to 'Cofnij', activities_path
+  %h1 Activity
+  = link_to 'Edit activity', edit_activity_path(@activity)
+  = link_to "Delete", activity_path(@activity), method: :delete, data: {confirm: 'Are you sure?'}, class: 'delete'
+  %table.table.table-bordered
     %thead
       %tr
         %th{:scope => "col"} Duration
         %th{:scope => "col"} Completed on
         %th{:scope => "col"} Activity type
-        %th
     %tbody
       %tr
         %th= @activity.duration
         %th= @activity.completed_on
         %th= @activity.activity_type
-        %th= link_to "Delate", activity_path(@activity), method: :delete, data: {confirm: 'Jesteś pewnien?'}
-
-
-
-  = link_to 'Edit activity', edit_activity_path(@activity)
-  %br/

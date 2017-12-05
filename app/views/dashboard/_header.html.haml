@@ -1,16 +1,24 @@
-%nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %a.navbar-brand= link_to 'CaloriesCounter', root_path
+%nav.navbar.navbar-expand-lg.navbar-light
+  %navbar-brand.logo= link_to 'CaloriesCounter', root_path
   %button.navbar-toggler{"aria-controls" => "navbarNavAltMarkup", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNavAltMarkup", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
   #navbarNavAltMarkup.collapse.navbar-collapse
     %ul.navbar-nav.ml-auto
-      %li.nav-item
-        %a.nav-link{:href => "#"} Pomiary
-      %li.nav-item
-        %a.nav-link{:href => "#"} Podsumowanie
       - if user_signed_in?
-        %li.nav-item= link_to "Edit account", edit_user_registration_path, class: 'nav-link'
-        %li.nav-item= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link'
+        %li.nav-item
+          = link_to edit_user_registration_path, class: 'nav-link' do
+            %i.fa.fa-user-o
+            Edit account
+        %li.nav-item
+          = link_to destroy_user_session_path, method: :delete, class: 'nav-link' do
+            %i.fa.fa-sign-out
+            Log out
       - else
-        %li.nav-item= link_to "Log in", new_user_session_path, class: 'nav-link'
-        %li.nav-item= link_to "Registration", new_user_registration_path, class: 'nav-link'
+        %li.nav-item
+          = link_to new_user_session_path, class: 'nav-link' do
+            %i.fa.fa-user-o
+            Log in
+        %li.nav-item
+          = link_to new_user_registration_path, class: 'nav-link' do
+            %i.fa.fa-sign-out
+            Registration

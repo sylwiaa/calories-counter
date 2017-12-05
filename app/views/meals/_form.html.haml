@@ -11,16 +11,16 @@
 
 
 = form_for @meal, html: { multipart: true } do |f|
-  %h5 Product:
-  = f.collection_select :product_id, Product.for_user(current_user), :id, :select_title, prompt: true
-
+  %h5 Add or select product:
   %a.btn.btn-primary{ "data-toggle" => "modal", "data-target" => "#productModal" } Add Product
+  %br
+  = f.collection_select :product_id, Product.for_user(current_user), :id, :select_title, {prompt: true},  class: 'form-control'
 
   %h5 Meal type:
   = f.text_field :meal_type, class: 'form-control'
 
   %h5 Quantity:
-  = f.text_field :quantity, class: 'form-control'
+  = f.number_field :quantity, class: 'form-control'
 
   %h5 Eaten on:
   = f.date_select :eaten_on, class: 'form-control'

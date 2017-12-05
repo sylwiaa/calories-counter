@@ -1,11 +1,57 @@
-// Place all the styles related to the meals controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 .meal  {
-  h2 {
-    color: #FF6328;
-  }
   form, #meal_product_id {
     max-width: 600px;
+  }
+
+  span, .fa-cutlery {
+    font-size: 30px;
+    padding-bottom: 30px;
+  }
+  span {
+    padding-left: 10px;
+  }
+
+  .modal-content {
+    background-color: #F5B872;
+
+    .modal-title {
+      font-size: 27px;
+      font-weight: bold;
+    }
+    .modal-body {
+      border-top: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      h5 {
+        padding-top: 17px;
+      }
+    }
+  }
+}
+
+.show-meal {
+   a {
+    text-decoration: none;
+    color: #F5B872;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #212529;
+  }
+  .delete {
+    float: right;
+  }
+}
+
+.index-meal {
+  td > a {
+    text-decoration: none;
+    color: #F5B872;
+  }
+  a:hover {
+    color: #212529;
+  }
+  span {
+    font-size: 20px;
+    display: block;
   }
 }

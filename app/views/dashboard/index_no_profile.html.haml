@@ -1,6 +1,11 @@
-.container
-  %h2 Today
-  %h2= Date.today
+.container.dashboard_no_profile
   .row
-    .col-sm-12
-      %h3= link_to 'Create profile', new_profile_path
+    .col-sm-4
+      %i.fa.fa-check-square-o
+      %h3 Sign up
+    .col-sm-4
+      %i.fa.fa-square-o
+      %h3= link_to 'Set up profile', new_profile_path
+    .col-sm-4
+      %i.fa.fa-square-o
+      %h3 Add meal history

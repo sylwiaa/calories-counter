@@ -7,34 +7,34 @@
         %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
           %span{"aria-hidden" => "true"}
 
-%form
-  = form_for @profile, url: profile_path, html: { multipart: true } do |f|
-    .row
-      .col-md-6.mb-3
-        = f.radio_button :gender, 'male'
-        = label :gender_male, 'male'
-        = f.radio_button :gender, 'female'
-        = label :gender_female, 'female'
-    .row
-      .col-md-3.mb-3
-        = f.label :weight
-        = f.text_field :weight, class: 'form-control'
-      .col-md-3.mb-3
-        = f.label :height
-        = f.text_field :height, class: 'form-control'
-    .row
-      .col-md-6.mb-3
-        = f.label :date_of_birth
-        %br
-        = f.date_select :date_of_birth, order: [:month, :day, :year], class: 'custom-select'
-    .row
-      .col-md-6.mb-3
-        = f.label :activity_level
-        %br
-        = f.select :activity_level, [["patient lying in bed", 0], ["low physical activity", 1], ["moderate physical activity", 2], ["active lifestyle", 3], ["very active lifestyle", 4], ["competitive sport", 5] ], class: 'custom-select', include_blank: true
-    .row
-      .col-md-6.mb-3
-        = f.label :purpose
-        %br
-        = f.select :purpose, [["lose weight", 0], ["gain weight", 1], ["maintain weight", 2]], class: 'custom-select', include_blank: true
-    = f.submit "Wyślij", class: 'btn btn-default'
+
+= form_for @profile, url: profile_path, html: { multipart: true } do |f|
+  .row
+    .col-md-6.mb-3
+      = f.radio_button :gender, 'male'
+      = label :gender_male, 'male'
+      = f.radio_button :gender, 'female'
+      = label :gender_female, 'female'
+  .row
+    .col-md-3.mb-3
+      = f.label :weight
+      = f.number_field :weight, class: 'form-control'
+    .col-md-3.mb-3
+      = f.label :height
+      = f.number_field :height, class: 'form-control'
+  .row
+    .col-md-6.mb-3
+      = f.label :date_of_birth
+      %br
+      = f.date_select :date_of_birth, start_year: 1980, end_year: 2010, order: [:month, :day, :year], class: 'custom-select'
+  .row
+    .col-md-6.mb-3
+      = f.label :activity_level
+      %br
+      = f.select :activity_level, [["patient lying in bed", 0], ["low physical activity", 1], ["moderate physical activity", 2], ["active lifestyle", 3], ["very active lifestyle", 4], ["competitive sport", 5] ], {include_blank: true}, class: 'form-control'
+  .row
+    .col-md-6.mb-3
+      = f.label :purpose
+      %br
+      = f.select :purpose, [["lose weight", 0], ["gain weight", 1], ["maintain weight", 2]], { include_blank: true }, class: 'form-control'
+  = f.submit "Wyślij", class: 'btn btn-default'

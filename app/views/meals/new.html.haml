@@ -1,6 +1,9 @@
 .container.meal
   .back= link_to 'Back', meals_path
-  %h2= params[:meal_type]
+  - if params[:meal_type]
+    %div
+      %i.fa.fa-cutlery
+      %span= params[:meal_type].capitalize
   .row
     .col-sm-12
       = render partial: 'form', meal: @meal

@@ -1,6 +1,6 @@
-.container
-  = link_to 'Cofnij', meals_path
+.container.meal
+  .back= link_to 'Cofnij', meals_path
   .row
     .col-sm-12
-      %h3 Edytuj posiłek
+      %h3 Edit meal
       = render partial: 'form', meal: @meal

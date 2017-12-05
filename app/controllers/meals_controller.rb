@@ -40,13 +40,13 @@ class MealsController < ApplicationController
   def destroy
     @meal =  current_user.meals.find(params[:id])
     @meal.destroy
-    redirect_to action: 'index'
+    redirect_to action: 'index', eaten_on: @meal.eaten_on
   end
 
   def update
     @meal =  current_user.meals.find(params[:id])
     if @meal.update(meal_params)
-      redirect_to action: 'index'
+      redirect_to action: 'index', eaten_on: @meal.eaten_on
     else
       render :edit
     end

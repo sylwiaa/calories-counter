@@ -59,7 +59,7 @@ class ProfileTest < ActiveSupport::TestCase
 
   test 'body_mass_index' do
     profile = create(:profile, weight: 65, height: 170)
-    assert_equal 38.24, profile.body_mass_index
+    assert_equal 22.49, profile.body_mass_index
   end
 
   test 'male basal_metabolic_rate' do
